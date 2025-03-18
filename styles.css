@@ -22,7 +22,7 @@ body {
 .container {
     width: 100%;
     margin: 0 auto;
-    padding: 0em 0.75em;
+    padding: 2em 0.75em;
 }
 
 img {
@@ -44,7 +44,7 @@ h2 {
 }
 
 h3, h4 {
-    margin: auto .75rem;
+    margin: .75rem;
     
 }
 
@@ -69,22 +69,11 @@ p {
 .header {
     display: flex;
     align-items: center;
-    padding: .125em .75em;
+    padding: .125em 1em;
     background: var(--primary-bg-color);
     text-transform: uppercase;
     letter-spacing: .25rem;
     white-space: nowrap;
-}
-
-.footer {
-    font-size: 1rem;
-    text-align: center;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem 5rem;
 }
 
 .mobile-hamburger-nav {
@@ -110,6 +99,25 @@ p {
     text-decoration: none;
 }
 
+/* Footer Section (Social Media & Copywright) */
+.footer {
+    background: var(--primary-bg-color);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+    max-width: 45%;
+}
+
+
 .desktop-nav {
     display: none;
 }
@@ -132,6 +140,19 @@ p {
     left: 1rem;
 }
 
+@media (orientation: landscape) and (max-width: 768px) {
+    .container{
+        max-width: 100%;
+    }
+
+    .header {
+        padding: .125em 1.75em;
+    }
+
+    .social-icons {
+        max-width: 30%;
+    }
+}
 /* Hero & Carousel Section
 .btn {
     display: inline-block;
