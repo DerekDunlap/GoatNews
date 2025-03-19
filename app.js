@@ -46,12 +46,26 @@ const playerList = document.getElementById('players-container')
 const submit = document.getElementById('submit')
 
 const topHeadlinesURL=`https://gnews.io/api/v4/search?topic=sports&q=sports&lang=en&token=1f9beb19876257b463232f36212ab5d5`
+let sportsScoresURL = [`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard`,`https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard`]
 
 getSportsNews(topHeadlinesURL, function(topNewArticles) {
     clearDisplay()
     homeContainerDiv.style.display="flex"
     displaytopSports(topNewArticles)
 })
+
+sportsScoresURL.forEach(sportURL => {
+    getSportsScore(sportURL,function(scoreBoardData){
+        // clearDisplay()
+        scoreBoardDiv.style.display="flex"
+        let sportName = sportURL.match(/sports\/([^/]+)\/([^/]+)\//)
+        sportName = sportName[2].toUpperCase() + " Games"
+        console.log(sportName)
+        displaySportsScore(sportName,scoreBoardData)
+    })
+});
+
+
 
 //Added to all buttons to clearDisplay
 function clearDisplay(){
@@ -66,6 +80,17 @@ function clearDisplay(){
 //gets Sports News Articles from ESPN API with LiveServer turned on. Pass url and callback function
 function getSportsNews(sportsNewsURL, sportsNewsDownloaded) {
     fetch(sportsNewsURL)
+        .then(response => {
+            return response.json()
+        }).then(sportsNewsArticles => {
+            sportsNewsDownloaded(sportsNewsArticles)
+        }).catch(err => {
+            console.error(err);
+        })
+}
+
+function getSportsScore(sportsScoresURL, sportsNewsDownloaded) {
+    fetch(sportsScoresURL)
         .then(response => {
             return response.json()
         }).then(sportsNewsArticles => {
@@ -342,22 +367,31 @@ function displaySportsScore(sportName,sportsScoresData){
         const sportsVenue=sportsEvent.competitions.map(function(sportsComp){
             let sportsTeams=sportsComp.competitors.map(function(sportsOppoent){
                 for(let i=0;i<6;i++){
-                    return `<li>${sportsOppoent.team.displayName} ${sportsOppoent.records[i].summary} ${sportsOppoent.score}</li>\n`
+                    return `<li>${sportsOppoent.team.abbreviation} ${sportsOppoent.score}</li>\n`
                 }
             })
             sportsTeams=sportsTeams.join("")
             let gameDate= new Date(sportsComp.date)
-            let weekday=new Intl.DateTimeFormat('en',{weekday:'short'}).format(gameDate)
             let month=new Intl.DateTimeFormat('en',{month:'2-digit'}).format(gameDate)
             let day=new Intl.DateTimeFormat('en',{day:'2-digit'}).format(gameDate)
-            gameDate=`${weekday} ${month}/${day}`
-            return `<div>
-                ${gameDate} - ${sportsComp.status.type.description} @ ${sportsComp.venue.fullName}
-                <ul>${sportsTeams}</ul>
-            </div>`
+            gameDate=`${month} ${day}`
+            let gameStatus
+            if(`${sportsComp.status.type.description}` == 'Final'){
+                gameStatus = 'Final'
+            }
+            else if (`${sportsComp.status.type.description}` == 'In Progress') {
+                gameStatus = 'Live'
+            }else{
+                gameStatus = 'Starting Soon'
+            }
+
+            return `
+                ${gameDate} ${gameStatus}
+                ${sportsTeams}
+            `
             })
-        const sportsEventTemplate=`<li>
-        <label>${sportsVenue}</label>
+        const sportsEventTemplate=`<li class='gamescore-card'>
+            ${sportsVenue}
         </li>`
         return sportsEventTemplate
     })

@@ -99,6 +99,27 @@ p {
     text-decoration: none;
 }
 
+#scoreboard-container {
+    display: flex !important;
+    flex-direction: column;
+    font-size: .75rem;
+    scroll-behavior: smooth;
+}
+
+#scoreInfoUL {
+    display: flex;
+    overflow-x: auto;
+    padding: 0;
+    column-gap: .5rem;
+}
+
+.gamescore-card {
+    padding-left: .1rem;
+    padding-right: .1rem;
+    background-color: #312F30;
+}
+
+
 /* Footer Section (Social Media & Copywright) */
 .footer {
     background: var(--primary-bg-color);
@@ -123,7 +144,7 @@ p {
 }
 
 #home-container {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
 }
 
 .top-article-item {
@@ -153,201 +174,3 @@ p {
         max-width: 30%;
     }
 }
-/* Hero & Carousel Section
-.btn {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 2rem;
-    font-weight: 700;
-    background-color:var(--bold-text);
-    color:var(--light-color);
-    padding: .25em 1.125em;
-    border-radius: 3rem;
-}
-
-.btn:hover,
- .btn:focus {
-    transition-property: 1ms;
-    background-color:var(--light-text);
-    color:var(--dark-text)
-}
-
-.accent-text {
-    color: var(--bold-text);
-}
-
-.hero-text {
-    color: var(--light-text);
-}
-
-/* Additional Content Section */
-/* .secondary-inner-div {
-    text-align: center;
-}
-
-.fa-shapes, .fa-school, .fa-music {
-    color: var(--bold-text);
-    font-weight: 600;
-    font-size: 3rem;
-    margin: .75em 0;
-}
-
-.third-content {
-    background: var(--light-bg-color);
-}
-
-.fourth-content {
-    background: var(--alt-light-bg)
-}
-
-.footer {
-    background: var(--pri-color);
-    padding: .5em .3em;
-} */
-
-/* Footer Section */
-
-/*.footer p {
-    margin: 0;
-    text-align: center;
-    color:var(--light-text)
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    
-    .row {
-        display: flex;
-    }
-
-    .header {
-        padding: 1em 3em;
-    }
-
-    .mobile-hamburger-nav {
-        display: none;
-    }
-
-    .desktop-nav {
-        display: block;
-    } 
-
-    .logo {
-        font-size: 2rem;
-        text-align: inherit;
-    }
-
-    .hero-content {
-        justify-content: space-between;
-        align-items: center;
-        padding: 3em;
-        gap: 1rem
-    }
-
-    .hero-carousel-wrapper {
-        max-width: 55%;
-        border-radius: 1.25%;
-    }
-
-    .hero-carousel-slider {
-        max-width: 100%;
-    }
-
-    .hero-text {
-        max-width: 35%;
-    }
-
-    .hero-text h2 {
-        font-size: 2.75rem;
-    }
-
-    .primary-content,
-    .secondary-content, .third-content, .fourth-content {
-        justify-content: center;
-        align-items: center;
-        padding: 3em 4em ;
-        gap: 5rem
-    }
-
-    .primary-text,
-    .secondary-text, .third-text, .fourth-text {
-        max-width: 35%;
-    }
-
-    .img-container {
-        max-width: 55%;
-    }
-
-}
-
-@media (min-width: 1024px) {
-    
-    .row {
-        display: flex;
-    }
-
-    .header {
-        padding: 1em 3em;
-    }
-
-    .mobile-hamburger-nav {
-        display: none;
-    }
-
-    .desktop-nav {
-        display: flex;
-    } 
-
-    .logo {
-        font-size: 2rem;
-        text-align: inherit;
-    }
-
-    .hero-content {
-        justify-content: space-between;
-        align-items: center;
-        padding: 3em 10em;
-        gap: 5rem
-    }
-
-    .hero-carousel-wrapper {
-        max-width: 55%;
-        border-radius: 1.25%;
-    }
-
-    .hero-carousel-slider {
-        max-width: 100%;
-    }
-
-    .hero-text {
-        max-width: 35%;
-    }
-
-    .hero-text h2 {
-        font-size: 2.75rem;
-    }
-
-    .primary-content,
-    .secondary-content, .third-content, .fourth-content {
-        justify-content: center;
-        align-items: center;
-        padding: 3em 5em ;
-        gap: 5rem
-    }
-
-    .secondary-content {
-        justify-content: center;
-        align-items: center;
-        padding: 1.5em 10em ;
-        gap: 5rem;
-    }
-
-    .primary-text,
-    .secondary-text, .third-text, .fourth-text {
-        max-width: 35%;
-    }
-
-    .img-container {
-        max-width: 35%;
-    }
-
-} */
