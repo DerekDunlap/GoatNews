@@ -46,7 +46,7 @@ const playerList = document.getElementById('players-container')
 const submit = document.getElementById('submit')
 
 const topHeadlinesURL=`https://gnews.io/api/v4/search?topic=sports&q=sports&lang=en&token=1f9beb19876257b463232f36212ab5d5`
-let sportsScoresURL = [`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard`,`https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard`]
+let sportsScoresURL = [`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard`]
 
 getSportsNews(topHeadlinesURL, function(topNewArticles) {
     clearDisplay()
